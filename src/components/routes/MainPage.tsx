@@ -1,5 +1,7 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GetAllUsers } from "../../requests/UserService";
+import { User } from "../../types/User";
 
 interface IProps {
     body?: string,
@@ -8,15 +10,17 @@ interface IProps {
 }
 
 export const MainPage: FC<IProps> = props =>{
+    const [users,setUsers] = useState<User[] | null>();
+
+    useEffect(() => {
+        GetAllUsers()
+        .then(users => setUsers(users))
+    },[]);
     return  (
-        <>
-            <div>
-                <h1 className="text-red-500 font-bold text-2xl">
-                    {props.body} {props.header}
-                </h1>
-                {props.children}
-            </div>
-            <Link to="/Profile/123das">Go to Profile page</Link>
+        <>  
+            <h1>Main Page</h1>      
+
+            <Link to="/users">Go to users page</Link>
         </>
     )
 }
