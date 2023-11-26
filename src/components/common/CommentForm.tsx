@@ -1,16 +1,16 @@
 import { FC, useEffect, useState } from "react";
-import { useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Comment } from "../../types/Comment";
-import { PostComment , PutComment } from "../../requests/CommentService";
+import { PostComment, PutComment } from "../../requests/CommentService";
 
 interface IProps {
     comment?: Comment,
-    handleAdd: (comment:Comment) => void,
-    handleUpdate: (comment:Comment) => void
+    handleAdd: (comment: Comment) => void,
+    handleUpdate: (comment: Comment) => void
 }
 export const CommentForm: FC<IProps> = props => {
 
-    const { postId } = useParams<{postId : string}>();
+    const { postId } = useParams<{ postId: string }>();
 
     const [id, setId] = useState<number | null>();
 
@@ -19,14 +19,14 @@ export const CommentForm: FC<IProps> = props => {
     const [body, setBody] = useState<string>();
 
     useEffect(() => {
-        if(props.comment){
+        if (props.comment) {
             setId(props.comment.id);
             setName(props.comment.name);
             setEmail(props.comment.email);
             setBody(props.comment.body);
         }
-    },[]);
-    
+    }, []);
+
     const handleSubmit = (event: any) => {
         event.preventDefault();
 
@@ -39,37 +39,37 @@ export const CommentForm: FC<IProps> = props => {
             email: target.email.value,
             body: target.body.value
         }
-        if(id){
+        if (id) {
             PutComment(data)
-            .then(c =>{
-                props.handleUpdate(c);
-            } );
-        }else{
+                .then(c => {
+                    props.handleUpdate(c);
+                });
+        } else {
             PostComment(data)
-            .then(c => props.handleAdd(c));
+                .then(c => props.handleAdd(c));
         }
     }
 
     return (
-        <div>
+        <div className="border border-2 border-black rounded p-3 w-fit bg-white">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[400px]">
-            <input type="number" defaultValue={id ? id : ""} id="id" />
-                <input type="number" defaultValue={postId} id="postId" hidden/>
+                <input type="number" defaultValue={id ? id : ""} id="id" hidden />
+                <input type="number" defaultValue={postId} id="postId" hidden />
 
-                <label htmlFor="name" className="flex flex-row gap-2 border border-3 border-black p-1" >
+                <label htmlFor="name" className="flex flex-row gap-2 p-1" >
                     <span>Name:</span>
                     <input type="text" defaultValue={name} id="name" className="bg-gray-300 rounded pl-1" />
                 </label>
-                <label htmlFor="email" className="flex flex-row gap-2  border border-3 border-black  p-1" >
-                    <span>Email:</span> 
+                <label htmlFor="email" className="flex flex-row gap-2 p-1" >
+                    <span>Email:</span>
                     <input type="email" defaultValue={email} id="email" className="bg-gray-300 rounded pl-1" />
                 </label>
-                <label htmlFor="body" className="flex flex-row gap-2  border border-3 border-black  p-1">
+                <label htmlFor="body" className="flex flex-row gap-2 p-1">
                     <span>Body:</span>
-                    <input type="text" defaultValue={body} id="body" className="bg-gray-300 rounded pl-1" />
+                    <textarea defaultValue={body} id="body" cols={35} rows={4} className="bg-gray-300 rounded pl-1 resize-none"/>
                 </label>
 
-                <input type="submit" value="Submit" className="border border-3 border-black bg-yellow-200"/>
+                <input type="submit" value="Submit" className="border border-3 border-black bg-yellow-200" />
             </form>
         </div>
     )

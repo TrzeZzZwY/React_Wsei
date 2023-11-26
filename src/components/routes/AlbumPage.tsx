@@ -10,19 +10,19 @@ interface IProps{
 
 export const AlbumPage: FC<IProps> = props =>{
 
-    const { id } = useParams<{id : string}>();
+    const { albumId } = useParams<{albumId : string}>();
 
     const [photos, setPhotos] = useState<Photo[] | null>();
 
     useEffect(()=>{
-        GetPhotosForAlbumId(Number(id))
+        GetPhotosForAlbumId(Number(albumId))
         .then(photos => setPhotos(photos))
     },[])
     return (
-        <>
+        <div className='flex flex-row gap-3 flex-wrap'>
             {photos?.map(photo =>
                 <PhotoTile photo={photo}/>
                 )}
-        </>
+        </div>
     )
 }

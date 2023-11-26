@@ -15,7 +15,7 @@ export const Users : FC<IProps> = (props) =>{
         .then(users => setUsers(users))
     },[]);
     return(
-        <>
+        <div className='m-10'>
             <h1>Users</h1>
             <table>
                 <thead>
@@ -29,7 +29,7 @@ export const Users : FC<IProps> = (props) =>{
                 <tbody>
                 {users?.map(user =>
                     <tr key={user.id}>
-                        <td>{user.id}</td>
+                        <td className='p-2'>{user.id}</td>
                         <td>{user.username}</td>
                         <td>{user.email}</td>
                         <td><LinkButton text='profile' to={"/Profile/" + user.id}></LinkButton></td>
@@ -37,6 +37,6 @@ export const Users : FC<IProps> = (props) =>{
                     )}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }

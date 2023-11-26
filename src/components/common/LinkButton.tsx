@@ -7,5 +7,5 @@ interface IProps {
 }
 
 export const LinkButton: FC<IProps> = props => {
-    return <Link to={props.to} >{props.text}</Link>
+    return <Link to={props.to} className='border border-2  border-black rounded min-w-[96px] h-12 bg-blue-300 p-1' >{props.text}</Link>
 } 

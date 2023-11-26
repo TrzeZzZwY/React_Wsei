@@ -66,11 +66,11 @@ export const PostPage: FC<IProps> = props => {
             <span className='text-xl'>Comments:</span>
             <button onClick={showFormToggle} className='border border-2  border-black rounded w-24 h-12 bg-green-300'>Add</button>
             {showForm && (
-                <div className="border border-2 border-black rounded p-3 w-fit">
+                <div className="">
                     <CommentForm handleAdd={handleAdd} handleUpdate={handleUpdate} />
                 </div>
             )}
-            {comments?.map(comment =>
+            {comments?.slice().reverse().map(comment =>
                 <CommentTile comment={comment} toggleDelete={ToggleDelete} key={comment.id} handleAdd={handleAdd} handleUpdate={handleUpdate} />
             )}
         </div>

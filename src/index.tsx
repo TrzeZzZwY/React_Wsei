@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter , Link } from 'react-router-dom';
 import { Router } from './components/routes/Router';
 import "./index.css";
 
@@ -7,9 +7,11 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
-    <Router/>
-  </BrowserRouter>
+  <div>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  </div>
 );
 
 //react-router-dom

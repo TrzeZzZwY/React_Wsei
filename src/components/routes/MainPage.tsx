@@ -17,10 +17,9 @@ export const MainPage: FC<IProps> = props =>{
         .then(users => setUsers(users))
     },[]);
     return  (
-        <>  
-            <h1>Main Page</h1>      
-
-            <Link to="/users">Go to users page</Link>
-        </>
+        <div className="flex flex-col items-center justify-items-center m-20 gap-5">     
+            <span className='text-xl'>Main Page</span>
+            <Link to="/users" className='border border-2  border-black rounded w-28 h-12 bg-yellow-300 p-2'>Users page</Link>
+        </div>
     )
 }

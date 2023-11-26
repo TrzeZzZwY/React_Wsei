@@ -22,7 +22,7 @@ export const CommentTile: FC<IProps> = props => {
     }
     return (
         <div className="flex flex-row gap-8">
-            <div className='flex flex-row gap-8  border border-2 border-black rounded p-3 min-w-[900px] max-w-[900px] justify-between'>
+            <div className='flex flex-row gap-8  border border-2 border-black rounded p-3 min-w-[900px] max-w-[900px] justify-between bg-white'>
                 <div className='flex flex-col gap-2'>
                     <div className='flex flex-row gap-2'>
                         <span className='text-sm font-bold italic'>{props.comment.name}</span>
@@ -39,9 +39,7 @@ export const CommentTile: FC<IProps> = props => {
                 </div>
             </div>
             {showForm && (
-                <div className="border border-2 border-black rounded p-3 ">
-                    <CommentForm comment={props.comment} handleAdd={props.handleAdd} handleUpdate={props.handleUpdate} />
-                </div>
+                <CommentForm comment={props.comment} handleAdd={props.handleAdd} handleUpdate={props.handleUpdate} />
             )}
         </div>
     )

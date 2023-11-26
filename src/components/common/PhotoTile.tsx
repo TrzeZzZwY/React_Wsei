@@ -9,9 +9,9 @@ interface IProps {
 export const PhotoTile: FC<IProps> = props => {
     return (
         <>
-            <div className='min-w-100 min-h-100 p-7 m-4 flex felx-nowrap justify-items-center items-center text-xl'>
-                <p>{props.photo.title}</p>
-                <img src={props.photo.thumbnailUrl} alt="photo"/>
+            <div className='p-7 m-4 flex flex-col justify-items-center items-center text-xl gap-5'>
+                <img src={props.photo.thumbnailUrl} alt="photo" />
+                <p className='text-sm w-[150px]'>{props.photo.title}</p>
             </div>
         </>
     )

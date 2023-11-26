@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react";
-import { useParams , Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { GetAlbumsForUserId } from "../../requests/AlbumService";
 import { GetTodosForUserId } from "../../requests/TodoService";
 import { GetPostsForUserId } from "../../requests/PostService";
@@ -76,7 +76,6 @@ export const Profile: FC<IProps> = props =>{
                     )}  
                  </div>
             </div>
-            <Link to="/" >Go to home page</Link>
         </div>
     )
 }
